@@ -55,8 +55,7 @@ using std::cout; using std::endl;
 $ { PRINT_OPERATOR(); }
 _ { PRINT_OPERATOR(); }
 
-//Ключевые слова
-
+//------------------------------Ключевые слова------------------------------//
 //Жесткие ключевые слова
 as { PRINT_HARD_KEYWORD(); }
 as? { PRINT_HARD_KEYWORD(); }
@@ -140,5 +139,6 @@ sealed { PRINT_MODIFIER_KEYWORD(); }
 suspend { PRINT_MODIFIER_KEYWORD(); }
 tailrec { PRINT_MODIFIER_KEYWORD(); }
 vararg { PRINT_MODIFIER_KEYWORD(); }
+//------------------------------Ключевые слова------------------------------//
 
 %%
