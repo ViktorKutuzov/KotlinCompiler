@@ -9,6 +9,7 @@ using std::cout; using std::endl;
 #define PRINT_OPERATOR() cout << "Found operator: " << yytext << endl;
 #define PRINT_HARD_KEYWORD() cout << "Found hard keyword: " << yytext << endl;
 #define PRINT_SOFT_KEYWORD() cout << "Found soft keyword: " << yytext << endl;
+#define PRINT_MODIFIER_KEYWORD() cout << "Found modifier keyword: " << yytext << endl;
 %}
 
 %%
@@ -108,4 +109,36 @@ set { PRINT_SOFT_KEYWORD(); }
 setparam { PRINT_SOFT_KEYWORD(); }
 value { PRINT_SOFT_KEYWORD(); }
 where { PRINT_SOFT_KEYWORD(); }
+
+//Ключевы слов - модификаторы
+abstract { PRINT_MODIFIER_KEYWORD(); }
+actual { PRINT_MODIFIER_KEYWORD(); }
+annotation { PRINT_MODIFIER_KEYWORD(); }
+companion { PRINT_MODIFIER_KEYWORD(); }
+const { PRINT_MODIFIER_KEYWORD(); }
+crossinline { PRINT_MODIFIER_KEYWORD(); }
+data { PRINT_MODIFIER_KEYWORD(); }
+enum { PRINT_MODIFIER_KEYWORD(); }
+expect { PRINT_MODIFIER_KEYWORD(); }
+external { PRINT_MODIFIER_KEYWORD(); }
+final { PRINT_MODIFIER_KEYWORD(); }
+infix { PRINT_MODIFIER_KEYWORD(); }
+inline { PRINT_MODIFIER_KEYWORD(); }
+inner { PRINT_MODIFIER_KEYWORD(); }
+internal { PRINT_MODIFIER_KEYWORD(); }
+lateinit { PRINT_MODIFIER_KEYWORD(); }
+noinline { PRINT_MODIFIER_KEYWORD(); }
+open { PRINT_MODIFIER_KEYWORD(); }
+operator { PRINT_MODIFIER_KEYWORD(); }
+out { PRINT_MODIFIER_KEYWORD(); }
+override { PRINT_MODIFIER_KEYWORD(); }
+private { PRINT_MODIFIER_KEYWORD(); }
+protected { PRINT_MODIFIER_KEYWORD(); }
+public { PRINT_MODIFIER_KEYWORD(); }
+reified { PRINT_MODIFIER_KEYWORD(); }
+sealed { PRINT_MODIFIER_KEYWORD(); }
+suspend { PRINT_MODIFIER_KEYWORD(); }
+tailrec { PRINT_MODIFIER_KEYWORD(); }
+vararg { PRINT_MODIFIER_KEYWORD(); }
+
 %%
