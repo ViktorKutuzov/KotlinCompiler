@@ -8,6 +8,7 @@ using std::cout; using std::endl;
 
 #define PRINT_OPERATOR() cout << "Found operator: " << yytext << endl;
 #define PRINT_HARD_KEYWORD() cout << "Found hard keyword: " << yytext << endl;
+#define PRINT_SOFT_KEYWORD() cout << "Found soft keyword: " << yytext << endl;
 %}
 
 %%
@@ -88,4 +89,23 @@ var { PRINT_HARD_KEYWORD(); }
 when { PRINT_HARD_KEYWORD(); }
 while { PRINT_HARD_KEYWORD(); }
 
+//Мягкие ключевые слова
+by { PRINT_SOFT_KEYWORD(); }
+catch { PRINT_SOFT_KEYWORD(); }
+constructor { PRINT_SOFT_KEYWORD(); }
+delegate { PRINT_SOFT_KEYWORD(); }
+dynamic { PRINT_SOFT_KEYWORD(); }
+field { PRINT_SOFT_KEYWORD(); }
+file { PRINT_SOFT_KEYWORD(); }
+finally { PRINT_SOFT_KEYWORD(); }
+get { PRINT_SOFT_KEYWORD(); }
+import { PRINT_SOFT_KEYWORD(); }
+init { PRINT_SOFT_KEYWORD(); }
+param { PRINT_SOFT_KEYWORD(); }
+property { PRINT_SOFT_KEYWORD(); }
+receiver { PRINT_SOFT_KEYWORD(); }
+set { PRINT_SOFT_KEYWORD(); }
+setparam { PRINT_SOFT_KEYWORD(); }
+value { PRINT_SOFT_KEYWORD(); }
+where { PRINT_SOFT_KEYWORD(); }
 %%
