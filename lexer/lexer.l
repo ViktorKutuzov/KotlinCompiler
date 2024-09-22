@@ -1,15 +1,14 @@
-%option c++
 %option noyywrap
 %option never-interactive
 
 %{
-#include <bits/stdc++.h>
-using std::cout; using std::endl;
+#include <stdio.h>
+#include <string.h>
 
-#define PRINT_OPERATOR() cout << "Found operator: " << yytext << endl;
-#define PRINT_HARD_KEYWORD() cout << "Found hard keyword: " << yytext << endl;
-#define PRINT_SOFT_KEYWORD() cout << "Found soft keyword: " << yytext << endl;
-#define PRINT_MODIFIER_KEYWORD() cout << "Found modifier keyword: " << yytext << endl;
+#define PRINT_OPERATOR() printf("Found operator: %s\n", yytext)
+#define PRINT_HARD_KEYWORD() printf("Found hard keyword: %s\n", yytext)
+#define PRINT_SOFT_KEYWORD() printf("Found soft keyword: %s\n", yytext)
+#define PRINT_MODIFIER_KEYWORD() printf("Found modifier keyword: %s\n", yytext)
 %}
 
 %%
