@@ -13,7 +13,7 @@
 
 %%
 
-//Операторы
+/*Операторы
 \+ { PRINT_OPERATOR(); }
 \- { PRINT_OPERATOR(); }
 \* { PRINT_OPERATOR(); }
@@ -54,8 +54,8 @@
 \$ { PRINT_OPERATOR(); }
 \_ { PRINT_OPERATOR(); }
 
-//------------------------------Ключевые слова------------------------------//
-//Жесткие ключевые слова
+/*------------------------------Ключевые слова------------------------------*/
+/*Жесткие ключевые слова*/
 as { PRINT_HARD_KEYWORD(); }
 as? { PRINT_HARD_KEYWORD(); }
 break { PRINT_HARD_KEYWORD(); }
@@ -88,7 +88,7 @@ var { PRINT_HARD_KEYWORD(); }
 when { PRINT_HARD_KEYWORD(); }
 while { PRINT_HARD_KEYWORD(); }
 
-//Мягкие ключевые слова
+/*Мягкие ключевые слова*/
 by { PRINT_SOFT_KEYWORD(); }
 catch { PRINT_SOFT_KEYWORD(); }
 constructor { PRINT_SOFT_KEYWORD(); }
@@ -108,7 +108,7 @@ setparam { PRINT_SOFT_KEYWORD(); }
 value { PRINT_SOFT_KEYWORD(); }
 where { PRINT_SOFT_KEYWORD(); }
 
-//Ключевы слов - модификаторы
+/*Ключевы слов - модификаторы*/
 abstract { PRINT_MODIFIER_KEYWORD(); }
 actual { PRINT_MODIFIER_KEYWORD(); }
 annotation { PRINT_MODIFIER_KEYWORD(); }
@@ -138,6 +138,6 @@ sealed { PRINT_MODIFIER_KEYWORD(); }
 suspend { PRINT_MODIFIER_KEYWORD(); }
 tailrec { PRINT_MODIFIER_KEYWORD(); }
 vararg { PRINT_MODIFIER_KEYWORD(); }
-//------------------------------Ключевые слова------------------------------//
+/*------------------------------Ключевые слова------------------------------*/
 
 %%
