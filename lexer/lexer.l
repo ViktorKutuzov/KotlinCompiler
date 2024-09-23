@@ -56,7 +56,7 @@
 
 
 as { PRINT_HARD_KEYWORD(); }
-as? { PRINT_HARD_KEYWORD(); }
+as\? { PRINT_HARD_KEYWORD(); }
 break { PRINT_HARD_KEYWORD(); }
 class { PRINT_HARD_KEYWORD(); }
 continue { PRINT_HARD_KEYWORD(); }
