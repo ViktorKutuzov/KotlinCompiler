@@ -1,11 +1,13 @@
 %option noyywrap
 %option never-interactive
+%option yylineno
 
 %{
 #include <stdio.h>
 #include <string.h>
 #include <limits.h>
 
+#define PRINT_ERROR() printf("Found error in line: %d\n", yytext)
 #define PRINT_OPERATOR() printf("Found operator: %s\n", yytext)
 #define PRINT_HARD_KEYWORD() printf("Found hard keyword: %s\n", yytext)
 #define PRINT_SOFT_KEYWORD() printf("Found soft keyword: %s\n", yytext)
@@ -171,6 +173,7 @@ vararg { PRINT_MODIFIER_KEYWORD(); }
     strcat(_string, yytext);
     if (_string[0] == '0' && strlen(_string) > 1)
     {
+        PRINT_ERROR();
         printf("Leading zero in integer type");
     }
     else
