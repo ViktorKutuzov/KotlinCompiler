@@ -4,16 +4,39 @@
 %{
 #include <stdio.h>
 #include <string.h>
+#include <limits.h>
 
 #define PRINT_OPERATOR() printf("Found operator: %s\n", yytext)
 #define PRINT_HARD_KEYWORD() printf("Found hard keyword: %s\n", yytext)
 #define PRINT_SOFT_KEYWORD() printf("Found soft keyword: %s\n", yytext)
 #define PRINT_MODIFIER_KEYWORD() printf("Found modifier keyword: %s\n", yytext)
-#define PRINT_IDENTIFIER) printf("Found identifier: %s\n", yytext)
+#define PRINT_IDENTIFIER() printf("Found identifier: %s\n", yytext)
+#define PRINT_DECIMAL_INTEGER() printf("Found decimal integer: %d\n", _number)
 %}
 
 %%
 
+%{
+    void removeUnderscores(char* str) {
+        int src = 0;
+        int dst = 0;
+        while (str[src] != '\0')
+        {
+            if (str[src] != '_')
+            {
+                str[dst] = str[src];
+                ++dst;
+            }
+            ++src;
+        }
+        str[dst] = '\0';
+    }
+%}
+
+%{
+    char _string[SHRT_MAX];
+    int _number;
+%}
 
 \+ { PRINT_OPERATOR(); }
 \- { PRINT_OPERATOR(); }
@@ -140,6 +163,20 @@ tailrec { PRINT_MODIFIER_KEYWORD(); }
 vararg { PRINT_MODIFIER_KEYWORD(); }
 
 [A-Za-z_][A-Za-z0-9_]* { PRINT_IDENTIFIER(); }
+
+[0-9](\_?[0-9])* { _string[0] = 0;
+    strcat(_string, yytext);
+    if (_string[0] == '0' && strlen(_string) > 1)
+    {
+        printf("Leading zero in integer type");
+    }
+    else
+    {
+        removeUnderscores(_string);
+        int _number = atoi(_string);
+        PRINT_DECIMAL_INTEGER();
+    }
+}
 
 . {}
 %%
