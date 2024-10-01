@@ -1,0 +1,14 @@
+Found hard keyword: var
+Found operator: =
+Found double number: 1.020000
+
+Found hard keyword: var
+Found double number: 1.023220
+
+Found hard keyword: var
+Found operator: =
+Found double number: 10000000000.000000
+
+Found hard keyword: var
+Found operator: =
+Found double number: 0.000000
