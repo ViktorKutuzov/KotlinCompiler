@@ -9,6 +9,7 @@
 #define PRINT_HARD_KEYWORD() printf("Found hard keyword: %s\n", yytext)
 #define PRINT_SOFT_KEYWORD() printf("Found soft keyword: %s\n", yytext)
 #define PRINT_MODIFIER_KEYWORD() printf("Found modifier keyword: %s\n", yytext)
+#define PRINT_IDENTIFIER) printf("Found identifier: %s\n", yytext)
 %}
 
 %%
@@ -137,6 +138,8 @@ sealed { PRINT_MODIFIER_KEYWORD(); }
 suspend { PRINT_MODIFIER_KEYWORD(); }
 tailrec { PRINT_MODIFIER_KEYWORD(); }
 vararg { PRINT_MODIFIER_KEYWORD(); }
+
+[A-Za-z_][A-Za-z0-9_]* { PRINT_IDENTIFIER(); }
 
 . {}
 %%

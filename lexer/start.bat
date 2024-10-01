@@ -1,3 +1,3 @@
 flex lexer.l
 gcc lex.yy.c
-a.exe
+get-content test.txt > a.exe
