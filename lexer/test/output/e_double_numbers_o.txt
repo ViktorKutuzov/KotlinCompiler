@@ -1,0 +1,14 @@
+Found decimal integer: 0
+Found identifier: e10
+
+Found decimal integer: 0
+Found decimal integer: 0
+Found identifier: E
+Found operator: -
+Found decimal integer: 0
+
+Found decimal integer: 0
+Found decimal integer: 0
+Found identifier: e
+Found operator: +
+Found decimal integer: 0
