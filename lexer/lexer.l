@@ -176,7 +176,7 @@ vararg { PRINT_MODIFIER_KEYWORD(); }
     else
     {
         removeUnderscores(_string);
-        int _integerNumber = atoi(_string);
+        _integerNumber = strtoll(_string);
         PRINT_DECIMAL_INTEGER();
     }
 }
@@ -184,7 +184,7 @@ vararg { PRINT_MODIFIER_KEYWORD(); }
 0(b|B)[0-1](_?[0-1]+)* { _string[0] = 0;
     strcat(_string, yytext);
     removeUnderscores(_string);
-    int _integerNumber = strtol(_string + 2, NULL, 2);
+    int _integerNumber = strtoll(_string + 2, NULL, 2);
     PRINT_BINARY_INTEGER();
 }
 
@@ -192,7 +192,7 @@ vararg { PRINT_MODIFIER_KEYWORD(); }
     _string[0] = 0;
     strcat(_string, yytext);
     removeUnderscores(_string);
-    _integerNumber = strtol(_string + 2, NULL, 16);
+    _integerNumber = strtoll(_string + 2, NULL, 16);
     PRINT_HEXADECIMAL_INTEGER();
 }
 
