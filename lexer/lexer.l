@@ -12,6 +12,7 @@
 #define PRINT_MODIFIER_KEYWORD() printf("Found modifier keyword: %s\n", yytext)
 #define PRINT_IDENTIFIER() printf("Found identifier: %s\n", yytext)
 #define PRINT_DECIMAL_INTEGER() printf("Found decimal integer: %d\n", _number)
+#define PRINT_BINARY_INTEGER() printf("Found binary integer: %d\n", _number)
 %}
 
 %%
@@ -176,6 +177,13 @@ vararg { PRINT_MODIFIER_KEYWORD(); }
         int _number = atoi(_string);
         PRINT_DECIMAL_INTEGER();
     }
+}
+
+0(b|B)[0-1](_?[0-1]+)* { _string[0] = 0;
+    strcat(_string, yytext);
+    removeUnderscores(_string);
+    int _number = strtol(_string + 2, NULL, 2);
+    PRINT_BINARY_INTEGER();
 }
 
 . {}
