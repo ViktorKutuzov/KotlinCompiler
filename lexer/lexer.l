@@ -11,9 +11,9 @@
 #define PRINT_SOFT_KEYWORD() printf("Found soft keyword: %s\n", yytext)
 #define PRINT_MODIFIER_KEYWORD() printf("Found modifier keyword: %s\n", yytext)
 #define PRINT_IDENTIFIER() printf("Found identifier: %s\n", yytext)
-#define PRINT_DECIMAL_INTEGER() printf("Found decimal integer: %d\n", _number)
-#define PRINT_BINARY_INTEGER() printf("Found binary integer: %d\n", _number)
-#define PRINT_HEXADECIMAL() printf("Found hexadecimal integer: %d\n", _number)
+#define PRINT_DECIMAL_INTEGER() printf("Found decimal integer: %d\n", _integerNumber)
+#define PRINT_BINARY_INTEGER() printf("Found binary integer: %d\n", _integerNumber)
+#define PRINT_HEXADECIMAL() printf("Found hexadecimal integer: %d\n", _integerNumber)
 %}
 
 %%
@@ -37,7 +37,8 @@
 
 %{
     char _string[SHRT_MAX];
-    int _number;
+    long long _integerNumber;
+    double _doubleNumber;
 %}
 
 \+ { PRINT_OPERATOR(); }
@@ -175,7 +176,7 @@ vararg { PRINT_MODIFIER_KEYWORD(); }
     else
     {
         removeUnderscores(_string);
-        int _number = atoi(_string);
+        int _integerNumber = atoi(_string);
         PRINT_DECIMAL_INTEGER();
     }
 }
@@ -183,7 +184,7 @@ vararg { PRINT_MODIFIER_KEYWORD(); }
 0(b|B)[0-1](_?[0-1]+)* { _string[0] = 0;
     strcat(_string, yytext);
     removeUnderscores(_string);
-    int _number = strtol(_string + 2, NULL, 2);
+    int _integerNumber = strtol(_string + 2, NULL, 2);
     PRINT_BINARY_INTEGER();
 }
 
@@ -191,7 +192,7 @@ vararg { PRINT_MODIFIER_KEYWORD(); }
     _string[0] = 0;
     strcat(_string, yytext);
     removeUnderscores(_string);
-    _number = strtol(_string + 2, NULL, 16);
+    _integerNumber = strtol(_string + 2, NULL, 16);
     PRINT_HEXADECIMAL_INTEGER();
 }
 
