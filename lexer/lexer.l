@@ -13,6 +13,7 @@
 #define PRINT_IDENTIFIER() printf("Found identifier: %s\n", yytext)
 #define PRINT_DECIMAL_INTEGER() printf("Found decimal integer: %d\n", _number)
 #define PRINT_BINARY_INTEGER() printf("Found binary integer: %d\n", _number)
+#define PRINT_HEXADECIMAL() printf("Found hexadecimal integer: %d\n", _number)
 %}
 
 %%
@@ -184,6 +185,14 @@ vararg { PRINT_MODIFIER_KEYWORD(); }
     removeUnderscores(_string);
     int _number = strtol(_string + 2, NULL, 2);
     PRINT_BINARY_INTEGER();
+}
+
+0(x|X)[0-9a-fA-F](_?[0-9a-fA-F]+)* {
+    _string[0] = 0;
+    strcat(_string, yytext);
+    removeUnderscores(_string);
+    _number = strtol(_string + 2, NULL, 16);
+    PRINT_HEXADECIMAL_INTEGER();
 }
 
 . {}
