@@ -1,8 +1,5 @@
-Found decimal integer: 0
-Found decimal integer: 0
+Found double number: 3.140000
 
-Found decimal integer: 0
-Found error in line: -1074962201
-Leading zero in integer type
-Found decimal integer: 0
-Found decimal integer: 0
+Found double number: 0.001000
+
+Found double number: 123.456000

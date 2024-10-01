@@ -1,14 +1,5 @@
-Found decimal integer: 0
-Found identifier: e10
+Found double number: 10000000000.000000
 
-Found decimal integer: 0
-Found decimal integer: 0
-Found identifier: E
-Found operator: -
-Found decimal integer: 0
+Found double number: 0.000250
 
-Found decimal integer: 0
-Found decimal integer: 0
-Found identifier: e
-Found operator: +
-Found decimal integer: 0
+Found double number: 3141.590000
