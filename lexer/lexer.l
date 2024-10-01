@@ -2,6 +2,8 @@
 %option never-interactive
 %option yylineno
 
+%x STRING
+
 %{
 #include <stdio.h>
 #include <string.h>
@@ -17,6 +19,7 @@
 #define PRINT_BINARY_INTEGER() printf("Found binary integer: %d\n", _integerNumber)
 #define PRINT_HEXADECIMAL_INTEGER() printf("Found hexadecimal integer: %d\n", _integerNumber)
 #define PRINT_FLOATING_POINT_NUMBER() printf("Found double number: %f\n", _doubleNumber)
+#define PRINT_STRING_LITERAL() printf("Found string literal: %s\n", stresc)
 
 %}
 
@@ -43,7 +46,47 @@
     char _string[SHRT_MAX];
     long long _integerNumber;
     double _doubleNumber;
+    char stresc[1024];
+    int stresc_len = 0;
 %}
+
+\" {
+    BEGIN(STRING);
+    stresc_len = 0;
+    stresc[0] = '\0';
+}
+<STRING>[^\"\\\n]+ {
+    if (stresc_len + yyleng < sizeof(stresc) - 1) {
+        strcat(stresc, yytext);
+        stresc_len += yyleng;
+    }
+}
+<STRING>\\n {
+    if (stresc_len < sizeof(stresc) - 1) {
+        stresc[stresc_len++] = '\n';
+    }
+}
+<STRING>\\\" {
+    if (stresc_len < sizeof(stresc) - 1) {
+        stresc[stresc_len++] = '\"';
+    }
+}
+<STRING>\\\\ {
+    if (stresc_len < sizeof(stresc) - 1) {
+        stresc[stresc_len++] = '\\';
+    }
+}
+<STRING>\[0-7]{1,4} {
+    char oct_char = (char)strtol(yytext + 1, NULL, 8);
+    if (stresc_len < sizeof(stresc) - 1) {
+        stresc[stresc_len++] = oct_char;
+        stresc[stresc_len] = '\0';
+    }
+}
+<STRING>\" {
+    PRINT_STRING_LITERAL();
+    BEGIN(INITIAL);
+}
 
 \+ { PRINT_OPERATOR(); }
 \- { PRINT_OPERATOR(); }
@@ -210,6 +253,7 @@ vararg { PRINT_MODIFIER_KEYWORD(); }
 }
 
 . {}
+
 %%
 
 int main(int argc, char **argv) {
