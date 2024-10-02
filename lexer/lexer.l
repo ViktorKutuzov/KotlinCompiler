@@ -214,7 +214,7 @@ vararg { PRINT_MODIFIER_KEYWORD(); }
 
 [A-Za-z_][A-Za-z0-9_]* { PRINT_IDENTIFIER(); }
 
-[0-9](\_?[0-9])* { _string[0] = 0;
+[0-9](\_*[0-9])* { _string[0] = 0;
     strcat(_string, yytext);
     if (_string[0] == '0' && strlen(_string) > 1)
     {
@@ -229,14 +229,14 @@ vararg { PRINT_MODIFIER_KEYWORD(); }
     }
 }
 
-0(b|B)[0-1](_?[0-1]+)* { _string[0] = 0;
+0(b|B)[0-1](_*[0-1]+)* { _string[0] = 0;
     strcat(_string, yytext);
     removeUnderscores(_string);
     int _integerNumber = strtoll(_string + 2, NULL, 2);
     PRINT_BINARY_INTEGER();
 }
 
-0(x|X)[0-9a-fA-F](_?[0-9a-fA-F]+)* {
+0(x|X)[0-9a-fA-F](_*[0-9a-fA-F]+)* {
     _string[0] = 0;
     strcat(_string, yytext);
     removeUnderscores(_string);
@@ -244,7 +244,7 @@ vararg { PRINT_MODIFIER_KEYWORD(); }
     PRINT_HEXADECIMAL_INTEGER();
 }
 
-(([0-9](\_?[0-9])*)?\.)?[0-9](\_?[0-9])*((e|E)(\+|\-)?[0-9](\_*[0-9])*)?(f|F)? {
+(([0-9](\_*[0-9])*)?\.)?[0-9](\_*[0-9])*((e|E)(\+|\-)?[0-9](\_*[0-9])*)?(f|F)? {
     _string[0] = 0;
     strcat(_string, yytext);
     removeUnderscores(_string);
