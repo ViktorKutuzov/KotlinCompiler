@@ -1,11 +1,11 @@
 Found hard keyword: if
 Found identifier: a
 Found operator: ==
-Found decimal integer: 0
+Found decimal integer: 5
 Found operator: &&
 Found identifier: b
 Found operator: !=
-Found decimal integer: 0
+Found decimal integer: 10
 Found hard keyword: return
 Found identifier: a
 Found operator: +

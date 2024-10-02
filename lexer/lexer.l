@@ -209,7 +209,7 @@ vararg { PRINT_MODIFIER_KEYWORD(); }
     else
     {
         removeUnderscores(_string);
-        _integerNumber = strtoll(_string, NULL, 1);
+        _integerNumber = strtoll(_string, NULL, 10);
         PRINT_DECIMAL_INTEGER();
     }
 }

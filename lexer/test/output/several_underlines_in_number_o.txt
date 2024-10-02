@@ -1,3 +1,3 @@
-Found decimal integer: 0
+Found decimal integer: 12334
 
 Found double number: 1.314340

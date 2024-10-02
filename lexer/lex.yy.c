@@ -1640,7 +1640,7 @@ YY_RULE_SETUP
     else
     {
         removeUnderscores(_string);
-        _integerNumber = strtoll(_string, NULL, 1);
+        _integerNumber = strtoll(_string, NULL, 10);
         PRINT_DECIMAL_INTEGER();
     }
 }
