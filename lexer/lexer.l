@@ -61,13 +61,6 @@ void removeUnderscores(char* str);
         stresc[stresc_len++] = '\\';
     }
 }
-<STRING>\[0-7]{1,4} {
-    char oct_char = (char)strtol(yytext + 1, NULL, 8);
-    if (stresc_len < sizeof(stresc) - 1) {
-        stresc[stresc_len++] = oct_char;
-        stresc[stresc_len] = '\0';
-    }
-}
 <STRING>\" {
     PRINT_STRING_LITERAL();
     BEGIN(INITIAL);
