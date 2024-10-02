@@ -21,26 +21,11 @@
 #define PRINT_FLOATING_POINT_NUMBER() printf("Found double number: %f\n", _doubleNumber)
 #define PRINT_STRING_LITERAL() printf("Found string literal: %s\n", stresc)
 
+void removeUnderscores(char* str);
+
 %}
 
 %%
-
-%{
-    void removeUnderscores(char* str) {
-        int src = 0;
-        int dst = 0;
-        while (str[src] != '\0')
-        {
-            if (str[src] != '_')
-            {
-                str[dst] = str[src];
-                ++dst;
-            }
-            ++src;
-        }
-        str[dst] = '\0';
-    }
-%}
 
 %{
     char _string[SHRT_MAX];
@@ -260,3 +245,18 @@ int main(int argc, char **argv) {
     yylex();
     return 0;
 }
+
+void removeUnderscores(char* str) {
+        int src = 0;
+        int dst = 0;
+        while (str[src] != '\0')
+        {
+            if (str[src] != '_')
+            {
+                str[dst] = str[src];
+                ++dst;
+            }
+            ++src;
+        }
+        str[dst] = '\0';
+    }
