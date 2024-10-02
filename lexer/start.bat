@@ -1,4 +1,6 @@
 @echo off
+del /q test\output\*
+
 flex lexer.l
 gcc lex.yy.c -o a.exe
 
