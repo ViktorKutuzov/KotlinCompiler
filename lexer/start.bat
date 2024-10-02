@@ -7,3 +7,4 @@ type test\input\double_numbers_i.txt | a.exe > test\output\double_numbers_o.txt
 type test\input\e_double_numbers_i.txt | a.exe > test\output\e_double_numbers_o.txt
 type test\input\floating_points_numbers_i.txt | a.exe > test\output\floating_points_numbers_o.txt
 type test\input\string_literal_i.txt | a.exe > test\output\string_literal_o.txt
+type test\input\several_underlines_in_number_i.txt | a.exe > test\output\several_underlines_in_number_o.txt
