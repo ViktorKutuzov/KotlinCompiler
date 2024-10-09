@@ -14,3 +14,10 @@
 %token DO
 %token FUNC
 %token FOR
+
+%nonassoc INCREMENT
+%nonassoc DECREMENT
+%nonassoc '('
+%nonassoc ')'
+%nonassoc '['
+%nonassoc ']'
