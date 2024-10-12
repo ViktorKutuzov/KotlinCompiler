@@ -21,3 +21,28 @@
 %nonassoc ')'
 %nonassoc '['
 %nonassoc ']'
+
+type: INT
+    | CHAR
+    | DOUBLE
+    | STRING
+    ;
+
+expr: type
+    | ID
+    | '(' expr ')'
+    | expr '.' ID
+    | expr '+' expr
+    | expr '-' expr
+    | expr '+' expr
+    | expr '*' expr
+    | expr '/' expr
+    | expr '=' expr
+    | expr '<' expr
+    | expr '>' expr
+    | expr '&' expr
+    | expr '|' expr
+    | '-' expr %prec UMINUS
+    | '+' expr %prec UPLUS
+    | '!' expr
+    ;
