@@ -54,3 +54,12 @@ exprList: expr
 exprListE : exprList
     | /*empty*/
     ;
+
+stmt: expr
+    | expr ';'
+    ; /* Будут добавлены позже*/
+
+stmtList: stmt
+    | stmtList stmt
+    ;
+
