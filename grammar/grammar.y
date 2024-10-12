@@ -63,3 +63,23 @@ stmtList: stmt
     | stmtList stmt
     ;
 
+blockStmt: '{' stmtList'}'
+    | '{' '}'
+    ;
+
+ifStmt: IF '(' expr ')' expr
+    | IF '(' expr ')' blockStmt
+    | IF '(' expr ')' ELSE blockStmt
+    ;
+
+whileStmt: WHILE '(' expr ')' expr
+     | WHILE '(' expr ')' blockStmt
+     ;
+
+doWhileStmt: DO stmt WHILE '(' expr ')'
+    | DO blockStmt WHILE '(' expr ')'
+    ;
+
+forStmt: FOR '(' ID IN expr ')' stmt
+    | FOR '(' ID IN expr ')' blockStmt
+    ;
