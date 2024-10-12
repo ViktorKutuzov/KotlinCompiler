@@ -89,3 +89,18 @@ doWhileStmt: DO stmt WHILE '(' expr ')'
 forStmt: FOR '(' ID IN expr ')' stmt
     | FOR '(' ID IN expr ')' blockStmt
     ;
+
+varDecl: ID ':' type
+    | ID '=' expr
+    ;
+
+varDeclList: varDecl
+    | varDeclList ',' varDecl
+    ;
+
+valDecl : ID ':' type;
+    | ID '=' expr;
+
+valDeclList: valDecl
+    | valDeclList ',' valDecl
+    ;
