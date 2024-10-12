@@ -34,6 +34,14 @@ type: INT_KEYWORD
     | STRING_KEYWORD
     ;
 
+literal: INT_LITERAL
+    | CHAR_LITERAL
+    | DOUBLE_LITERAL
+    | STRING_LITERAL
+    | TRUE_LITERAL
+    | FALSE_LITERAL
+    ;
+
 expr: type
     | ID
     | '(' expr ')'
