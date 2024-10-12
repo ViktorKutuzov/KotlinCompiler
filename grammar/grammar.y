@@ -73,7 +73,7 @@ blockStmt: '{' stmtList'}'
     | '{' '}'
     ;
 
-ifStmt: IF '(' expr ')' exprраз
+ifStmt: IF '(' expr ')' expr
     | IF '(' expr ')' blockStmt
     | IF '(' expr ')' ELSE blockStmt
     ;
