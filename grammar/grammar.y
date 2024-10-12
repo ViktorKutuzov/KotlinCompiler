@@ -112,3 +112,14 @@ valDecl : ID ':' type;
 valDeclList: valDecl
     | valDeclList ',' valDecl
     ;
+
+funcArg: ID ':' type
+    ;
+
+funcArgList: funcArg
+    | funcArgList ',' funcArg
+    ;
+
+funcArgListE: funcArgList
+    |/*empty*/
+    ;
