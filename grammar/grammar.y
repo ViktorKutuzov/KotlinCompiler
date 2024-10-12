@@ -46,3 +46,11 @@ expr: type
     | '+' expr %prec UPLUS
     | '!' expr
     ;
+
+exprList: expr
+    | exprList ',' expr
+    ;
+
+exprListE : exprList
+    | /*empty*/
+    ;
