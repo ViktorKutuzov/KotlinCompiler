@@ -123,3 +123,8 @@ funcArgList: funcArg
 funcArgListE: funcArgList
     |/*empty*/
     ;
+
+funcDecl: FUNC ID '(' funcArgListE ')' blockStmt
+    | FUNC ID '(' funcArgListE ')' ':' type blockStmt
+    ;
+
