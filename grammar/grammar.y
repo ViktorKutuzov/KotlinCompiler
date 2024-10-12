@@ -139,3 +139,26 @@ funcDecl: FUNC ID '(' funcArgListE ')' blockStmt
     | FUNC ID '(' funcArgListE ')' ':' type blockStmt
     ;
 
+classMemberType: valStmt
+    | varStmt
+    | funcDecl;
+    ;
+
+classMember: classMemberType
+    | classMemberMods classMemberType
+    ;
+
+classMemberMods: PRIVATE
+    | PROTECTED
+    | INTERNAL
+    | PUBLIC
+    | OVERRIDE
+    ;
+
+classMemberList: classMember
+    | classMemberList classMember
+    ;
+
+classMemberListE: classMemberList
+    |/*empty*/
+    ;
