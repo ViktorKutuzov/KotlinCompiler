@@ -21,6 +21,17 @@
 %token FUNC
 %token FOR
 
+%token CLASS
+%token PRIVATE
+%token PROTECTED
+%token INTERNAL
+%token PUBLIC
+%token OPEN
+%token THIS
+%token SUPER
+%token OVERRIDE
+%token CONSTRUCTOR
+
 %nonassoc INCREMENT
 %nonassoc DECREMENT
 %nonassoc '('
