@@ -1,12 +1,18 @@
 %token VAL
 %token VAR
 %token ID
-%token INT
-%token CHAR
-%token DOUBLE
-%token STRING
-%token TRUE
-%token FALSE
+
+%token INT_KEYWORD
+%token CHAR_KEYWORD
+%token DOUBLE_KEYWORD
+%token STRING_KEYWORD
+
+%token INT_LITERAL
+%token CHAR_LITERAL
+%token DOUBLE_LITERAL
+%token STRING_LITERAL
+%token TRUE_LITERAL
+%token FALSE_LITERAL
 
 %token IF
 %token ELSE
@@ -22,10 +28,10 @@
 %nonassoc '['
 %nonassoc ']'
 
-type: INT
-    | CHAR
-    | DOUBLE
-    | STRING
+type: INT_KEYWORD
+    | CHAR_KEYWORD
+    | DOUBLE_KEYWORD
+    | STRING_KEYWORD
     ;
 
 expr: type
@@ -67,7 +73,7 @@ blockStmt: '{' stmtList'}'
     | '{' '}'
     ;
 
-ifStmt: IF '(' expr ')' expr
+ifStmt: IF '(' expr ')' exprраз
     | IF '(' expr ')' blockStmt
     | IF '(' expr ')' ELSE blockStmt
     ;
