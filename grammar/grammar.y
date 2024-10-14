@@ -40,7 +40,12 @@
 %nonassoc '['
 %nonassoc ']'
 
+%start program
+
 %%
+
+program: type
+    ;
 
 type: INT_KEYWORD
     | CHAR_KEYWORD
