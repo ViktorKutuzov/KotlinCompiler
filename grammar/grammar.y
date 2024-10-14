@@ -39,6 +39,8 @@
 %nonassoc '['
 %nonassoc ']'
 
+%%
+
 type: INT_KEYWORD
     | CHAR_KEYWORD
     | DOUBLE_KEYWORD
@@ -162,3 +164,5 @@ classMemberList: classMember
 classMemberListE: classMemberList
     |/*empty*/
     ;
+
+%%
