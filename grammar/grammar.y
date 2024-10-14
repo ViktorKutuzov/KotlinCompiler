@@ -20,6 +20,7 @@
 %token DO
 %token FUNC
 %token FOR
+%token IN
 
 %token CLASS
 %token PRIVATE
