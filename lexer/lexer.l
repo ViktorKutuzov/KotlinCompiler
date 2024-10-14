@@ -9,6 +9,7 @@
 #include <string.h>
 #include <limits.h>
 
+#define PRINT_UNSUPPORTED() printf("This language option is not supported at line %d: %s\n", yylineno, yytext)
 #define PRINT_ERROR() printf("Found error in line: %d\n", yytext)
 #define PRINT_OPERATOR() printf("Found operator: %s\n", yytext)
 #define PRINT_HARD_KEYWORD() printf("Found hard keyword: %s\n", yytext)
@@ -108,7 +109,7 @@ void removeUnderscores(char* str);
 
 
 as { PRINT_HARD_KEYWORD(); }
-as\? { PRINT_HARD_KEYWORD(); }
+as\? { PRINT_UNSUPPORTED(); }
 break { PRINT_HARD_KEYWORD(); }
 class { PRINT_HARD_KEYWORD(); }
 continue { PRINT_HARD_KEYWORD(); }
@@ -132,28 +133,28 @@ this { PRINT_HARD_KEYWORD(); }
 throw { PRINT_HARD_KEYWORD(); }
 true { PRINT_HARD_KEYWORD(); }
 try { PRINT_HARD_KEYWORD(); }
-typealias { PRINT_HARD_KEYWORD(); }
-typeof { PRINT_HARD_KEYWORD(); }
+typealias { PRINT_UNSUPPORTED(); }
+typeof { PRINT_UNSUPPORTED(); }
 val { PRINT_HARD_KEYWORD(); }
 var { PRINT_HARD_KEYWORD(); }
 when { PRINT_HARD_KEYWORD(); }
 while { PRINT_HARD_KEYWORD(); }
 
 
-by { PRINT_SOFT_KEYWORD(); }
+by { PRINT_UNSUPPORTED(); }
 catch { PRINT_SOFT_KEYWORD(); }
 constructor { PRINT_SOFT_KEYWORD(); }
-delegate { PRINT_SOFT_KEYWORD(); }
-dynamic { PRINT_SOFT_KEYWORD(); }
-field { PRINT_SOFT_KEYWORD(); }
+delegate { PRINT_UNSUPPORTED(); }
+dynamic { PRINT_UNSUPPORTED(); }
+field { PRINT_UNSUPPORTED(); }
 file { PRINT_SOFT_KEYWORD(); }
 finally { PRINT_SOFT_KEYWORD(); }
 get { PRINT_SOFT_KEYWORD(); }
 import { PRINT_SOFT_KEYWORD(); }
 init { PRINT_SOFT_KEYWORD(); }
 param { PRINT_SOFT_KEYWORD(); }
-property { PRINT_SOFT_KEYWORD(); }
-receiver { PRINT_SOFT_KEYWORD(); }
+property { PRINT_UNSUPPORTED(); }
+receiver { PRINT_UNSUPPORTED(); }
 set { PRINT_SOFT_KEYWORD(); }
 setparam { PRINT_SOFT_KEYWORD(); }
 value { PRINT_SOFT_KEYWORD(); }
@@ -161,34 +162,34 @@ where { PRINT_SOFT_KEYWORD(); }
 
 
 abstract { PRINT_MODIFIER_KEYWORD(); }
-actual { PRINT_MODIFIER_KEYWORD(); }
-annotation { PRINT_MODIFIER_KEYWORD(); }
-companion { PRINT_MODIFIER_KEYWORD(); }
+actual { PRINT_UNSUPPORTED(); }
+annotation { PRINT_UNSUPPORTED(); }
+companion { PRINT_UNSUPPORTED(); }
 const { PRINT_MODIFIER_KEYWORD(); }
-crossinline { PRINT_MODIFIER_KEYWORD(); }
-data { PRINT_MODIFIER_KEYWORD(); }
+crossinline { PRINT_UNSUPPORTED(); }
+data { PRINT_UNSUPPORTED(); }
 enum { PRINT_MODIFIER_KEYWORD(); }
-expect { PRINT_MODIFIER_KEYWORD(); }
-external { PRINT_MODIFIER_KEYWORD(); }
+expect { PRINT_UNSUPPORTED(); }
+external { PRINT_UNSUPPORTED(); }
 final { PRINT_MODIFIER_KEYWORD(); }
-infix { PRINT_MODIFIER_KEYWORD(); }
-inline { PRINT_MODIFIER_KEYWORD(); }
-inner { PRINT_MODIFIER_KEYWORD(); }
+infix { PRINT_UNSUPPORTED(); }
+inline { PRINT_UNSUPPORTED(); }
+inner { PRINT_UNSUPPORTED(); }
 internal { PRINT_MODIFIER_KEYWORD(); }
-lateinit { PRINT_MODIFIER_KEYWORD(); }
-noinline { PRINT_MODIFIER_KEYWORD(); }
+lateinit { PRINT_UNSUPPORTED(); }
+noinline { PRINT_UNSUPPORTED(); }
 open { PRINT_MODIFIER_KEYWORD(); }
 operator { PRINT_MODIFIER_KEYWORD(); }
-out { PRINT_MODIFIER_KEYWORD(); }
+out { PRINT_UNSUPPORTED(); }
 override { PRINT_MODIFIER_KEYWORD(); }
 private { PRINT_MODIFIER_KEYWORD(); }
 protected { PRINT_MODIFIER_KEYWORD(); }
 public { PRINT_MODIFIER_KEYWORD(); }
-reified { PRINT_MODIFIER_KEYWORD(); }
-sealed { PRINT_MODIFIER_KEYWORD(); }
-suspend { PRINT_MODIFIER_KEYWORD(); }
-tailrec { PRINT_MODIFIER_KEYWORD(); }
-vararg { PRINT_MODIFIER_KEYWORD(); }
+reified { PRINT_UNSUPPORTED(); }
+sealed { PRINT_UNSUPPORTED(); }
+suspend { PRINT_UNSUPPORTED(); }
+tailrec { PRINT_UNSUPPORTED(); }
+vararg { PRINT_UNSUPPORTED(); }
 
 [A-Za-z_][A-Za-z0-9_]* { PRINT_IDENTIFIER(); }
 
