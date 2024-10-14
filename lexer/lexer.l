@@ -10,7 +10,7 @@
 #include <limits.h>
 
 #define PRINT_UNSUPPORTED() printf("This language option is not supported at line %d: %s\n", yylineno, yytext)
-#define PRINT_ERROR() printf("Found error in line: %d\n", yytext)
+#define PRINT_ERROR(_errorMsg) printf("Found error in line %d: %s - %s\n", yylineno, yytext, _errorMsg)
 #define PRINT_OPERATOR() printf("Found operator: %s\n", yytext)
 #define PRINT_HARD_KEYWORD() printf("Found hard keyword: %s\n", yytext)
 #define PRINT_SOFT_KEYWORD() printf("Found soft keyword: %s\n", yytext)
@@ -197,8 +197,8 @@ vararg { PRINT_UNSUPPORTED(); }
     strcat(_string, yytext);
     if (_string[0] == '0' && strlen(_string) > 1)
     {
-        PRINT_ERROR();
-        printf("Leading zero in integer type");
+        PRINT_ERROR("Leading zero in integer type");
+        return -1;
     }
     else
     {
@@ -208,19 +208,36 @@ vararg { PRINT_UNSUPPORTED(); }
     }
 }
 
-0(b|B)[0-1](_*[0-1]+)* { _string[0] = 0;
+0[bB][0-9](_*[0-9]+)* {
+    PRINT_ERROR("Incorrent binary number");
+}
+
+0[bB][0-1](_*[0-1]+)* { _string[0] = 0;
     strcat(_string, yytext);
     removeUnderscores(_string);
     int _integerNumber = strtoll(_string + 2, NULL, 2);
     PRINT_BINARY_INTEGER();
 }
 
-0(x|X)[0-9a-fA-F](_*[0-9a-fA-F]+)* {
+0[bB]\_* {
+    PRINT_ERROR("Binary number cant start with leading underscore")
+    return -1;
+}
+
+0[xX][0-9a-fA-F](_*[0-9a-fA-F]+)* {
     _string[0] = 0;
     strcat(_string, yytext);
     removeUnderscores(_string);
     _integerNumber = strtoll(_string + 2, NULL, 16);
     PRINT_HEXADECIMAL_INTEGER();
+}
+
+0[xX][0-9a-ZA-Z](_*[0-9a-zA-Z]+)* {
+    PRINT_ERROR("Incorrent Hexadecimal number");
+}
+
+0[xX]\_* {
+    PRINT_ERROR("Hexadecimal number cant start with leading underscore")    return -1;
 }
 
 (([0-9](\_*[0-9])*)?\.)?[0-9](\_*[0-9])*((e|E)(\+|\-)?[0-9](\_*[0-9])*)?(f|F)? {
