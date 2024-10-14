@@ -111,16 +111,16 @@ forStmt: FOR '(' ID IN expr ')' stmt
     | FOR '(' ID IN expr ')' blockStmt
     ;
 
-varDecl: ID ':' type
-    | ID '=' expr
+varDecl: VAR ID ':' type
+    | VAR ID '=' expr
     ;
 
 varDeclList: varDecl
     | varDeclList ',' varDecl
     ;
 
-valDecl : ID ':' type;
-    | ID '=' expr;
+valDecl : VAL ID ':' type;
+    | VAL ID '=' expr;
 
 valDeclList: valDecl
     | valDeclList ',' valDecl
@@ -141,8 +141,8 @@ funcDecl: FUNC ID '(' funcArgListE ')' blockStmt
     | FUNC ID '(' funcArgListE ')' ':' type blockStmt
     ;
 
-classMemberType: valStmt
-    | varStmt
+classMemberType: varDecl
+    | valDecl
     | funcDecl;
     ;
 
