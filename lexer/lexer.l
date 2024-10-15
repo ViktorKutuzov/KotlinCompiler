@@ -23,9 +23,10 @@
 #define PRINT_FLOATING_POINT_NUMBER() printf("Found double number: %f\n", _doubleNumber)
 #define PRINT_STRING_LITERAL() printf("Found string literal: %s\n", stresc)
 #define PRINT_SINGLE_LINE_COMMENT() printf("Found single line comment: %s\n", yytext)
-#define PRINT_MULTILINE_COMMENT() printf("Found multi line comment: %s\n", yytext)
-#define PRINT_END_OF_INTERPOLATION() printf("Interpolation ends", yytext)
 #define PRINT_MULTILINE_COMMENT() printf("Found multi line comment: %s\n", stresc)
+#define PRINT_START_OF_INTERPOLATION() printf("Interpolation starts\n", yytext)
+#define PRINT_END_OF_INTERPOLATION() printf("Interpolation ends\n", yytext)
+#define PRINT_VARIABLE_INTERPOLATION() printf("Variable interpolation: %s\n", yytext)
 
 void removeUnderscores(char* str);
 
@@ -47,13 +48,16 @@ void removeUnderscores(char* str);
     stresc_len = 0;
     stresc[0] = '\0';
 }
-<STRING>[^\"\\\n]+ {
 
 <STRING>\$\{ {
     yy_push_state(INITIAL);
     ++stack_size;
     PRINT_START_OF_INTERPOLATION();
 }
+<STRING>$[A-Za-z_][A-Za-z0-9_]* {
+    PRINT_VARIABLE_INTERPOLATION();
+}
+<STRING>[^\"\\\n${]+ {
     if (stresc_len + yyleng < sizeof(stresc) - 1) {
         strcat(stresc, yytext);
         stresc_len += yyleng;
