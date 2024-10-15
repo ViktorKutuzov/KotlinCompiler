@@ -303,6 +303,9 @@ vararg { PRINT_UNSUPPORTED(); }
     }
 }
 
+\n {}
+[ \t]+ {}
+
 . {}
 
 %%
