@@ -21,6 +21,7 @@
 #define PRINT_HEXADECIMAL_INTEGER() printf("Found hexadecimal integer: %d\n", _integerNumber)
 #define PRINT_FLOATING_POINT_NUMBER() printf("Found double number: %f\n", _doubleNumber)
 #define PRINT_STRING_LITERAL() printf("Found string literal: %s\n", stresc)
+#define PRINT_SINGLE_LINE_COMMENT() printf("Found single line comment: %s\n", yytext)
 
 void removeUnderscores(char* str);
 
@@ -248,6 +249,9 @@ vararg { PRINT_UNSUPPORTED(); }
     PRINT_FLOATING_POINT_NUMBER();
 }
 
+\/\/.+ {
+    PRINT_SINGLE_LINE_COMMENT();
+}
 . {}
 
 %%
