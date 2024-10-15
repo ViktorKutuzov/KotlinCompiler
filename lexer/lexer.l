@@ -237,7 +237,7 @@ vararg { PRINT_UNSUPPORTED(); }
 }
 
 0[bB]\_* {
-    PRINT_ERROR("Binary number cant start with leading underscore")
+    PRINT_ERROR("Binary number cant start with leading underscore");
     return -1;
 }
 
@@ -249,12 +249,13 @@ vararg { PRINT_UNSUPPORTED(); }
     PRINT_HEXADECIMAL_INTEGER();
 }
 
-0[xX][0-9a-ZA-Z](_*[0-9a-zA-Z]+)* {
+0[xX][0-9a-zA-Z](_*[0-9a-zA-Z]+)* {
     PRINT_ERROR("Incorrent Hexadecimal number");
 }
 
 0[xX]\_* {
-    PRINT_ERROR("Hexadecimal number cant start with leading underscore")    return -1;
+    PRINT_ERROR("Hexadecimal number cant start with leading underscore");
+    return -1;
 }
 
 (([0-9](\_*[0-9])*)?\.)?[0-9](\_*[0-9])*((e|E)(\+|\-)?[0-9](\_*[0-9])*)?(f|F)? {
@@ -265,13 +266,12 @@ vararg { PRINT_UNSUPPORTED(); }
     PRINT_FLOATING_POINT_NUMBER();
 }
 
-\/\/.+ {
+\/\/.* {
     PRINT_SINGLE_LINE_COMMENT();
 }
 
 "/*" {
     BEGIN(MULTILINE_COMMENT);
-    stresc_len = 0;
     stresc[0] = '\0';
 }
 
@@ -325,4 +325,4 @@ void removeUnderscores(char* str) {
             ++src;
         }
         str[dst] = '\0';
-    }
+}
