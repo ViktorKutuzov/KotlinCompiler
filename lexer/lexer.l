@@ -34,6 +34,7 @@ void removeUnderscores(char* str);
 %%
 
 %{
+    int stack_size = 0;
     char _string[SHRT_MAX];
     long long _integerNumber;
     double _doubleNumber;
@@ -47,6 +48,12 @@ void removeUnderscores(char* str);
     stresc[0] = '\0';
 }
 <STRING>[^\"\\\n]+ {
+
+<STRING>\$\{ {
+    yy_push_state(INITIAL);
+    ++stack_size;
+    PRINT_START_OF_INTERPOLATION();
+}
     if (stresc_len + yyleng < sizeof(stresc) - 1) {
         strcat(stresc, yytext);
         stresc_len += yyleng;
@@ -277,14 +284,17 @@ vararg { PRINT_UNSUPPORTED(); }
     BEGIN(INITIAL);
 }
 
-<STRING>\$\{ {
-    yy_push_state(INITIAL);
+"{" {
+    printf("{\n");
 }
 
-\} {
-    if (yy_top_state() == INTERPOLATION) {
+"}" {
+    if (stack_size && yy_top_state() == STRING) {
         PRINT_END_OF_INTERPOLATION();
         yy_pop_state();
+        --stack_size;
+    } else {
+        printf("}\n");
     }
 }
 
