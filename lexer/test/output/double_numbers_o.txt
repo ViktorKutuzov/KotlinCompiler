@@ -1,5 +1,13 @@
 Found double number: 3.140000
-
 Found double number: 0.001000
-
 Found double number: 123.456000
+Found operator: -
+Found double number: 456.780000
+Found operator: -
+Found double number: 0.000000
+Found double number: 0.000000
+Found decimal integer: 42
+Found operator: -
+Found decimal integer: 7
+Found operator: -
+Found double number: 456.780000

@@ -1,3 +1,4 @@
+Found single line comment: // Test 1: Проверка простого выражения с операторами сравнения и арифметическими операторами
 Found hard keyword: if
 Found identifier: a
 Found operator: ==
@@ -6,8 +7,217 @@ Found operator: &&
 Found identifier: b
 Found operator: !=
 Found decimal integer: 10
+{
 Found hard keyword: return
 Found identifier: a
 Found operator: +
 Found identifier: b
+Found operator: ;
+}
+Found single line comment: // Test 2: Проверка оператора присваивания
+Found identifier: int
+Found identifier: x
+Found operator: =
+Found decimal integer: 5
+Found operator: ;
+Found identifier: x
+Found operator: +=
+Found decimal integer: 10
+Found operator: ;
+Found identifier: y
+Found operator: -=
+Found decimal integer: 20
+Found operator: ;
+Found single line comment: // Test 3: Проверка оператора сравнения
+Found hard keyword: if
+Found identifier: x
+Found operator: ==
+Found identifier: y
+{
+Found hard keyword: return
+Found hard keyword: true
+Found operator: ;
+}
+Found single line comment: // Test 4: Проверка логического оператора OR
+Found hard keyword: if
+Found identifier: x
+Found operator: >
+Found decimal integer: 10
+Found operator: ||
+Found identifier: y
+Found operator: <
+Found decimal integer: 5
+{
+Found hard keyword: return
+Found hard keyword: false
+Found operator: ;
+}
+Found single line comment: // Test 5: Проверка оператора НЕ и оператора НЕравенства
+Found hard keyword: if
+Found operator: !
+Found identifier: x
+Found operator: !=
+Found decimal integer: 5
+{
+Found hard keyword: return
+Found hard keyword: false
+Found operator: ;
+}
+Found single line comment: // Test 6: Проверка оператора умножения, деления и остатка от деления
+Found identifier: int
+Found identifier: z
+Found operator: =
+Found identifier: x
+Found operator: *
+Found identifier: y
+Found operator: /
+Found decimal integer: 2
+Found operator: %
+Found decimal integer: 3
+Found operator: ;
+Found single line comment: // Test 7: Проверка унарных операторов инкремента и декремента
+Found identifier: x
+Found operator: ++
+Found operator: ;
+Found identifier: y
+Found operator: --
+Found operator: ;
+Found single line comment: // Test 8: Проверка сложных логических выражений
+Found hard keyword: if
+Found identifier: x
+Found operator: <
+Found identifier: y
+Found operator: &&
+Found identifier: z
+Found operator: >
+Found decimal integer: 5
+Found operator: ||
+Found identifier: a
+Found operator: ==
+Found decimal integer: 0
+Found operator: &&
+Found operator: !
+Found identifier: b
+Found operator: !=
+Found decimal integer: 10
+{
+Found hard keyword: return
+Found decimal integer: 0
+Found operator: ;
+}
+Found single line comment: // Test 9: Проверка оператора сравнения с типом
+Found hard keyword: if
+Found identifier: x
+Found hard keyword: is
+Found identifier: int
+{
+Found identifier: println
+Found string literal: x is an integer
+Found operator: ;
+}
+Found single line comment: // Test 10: Проверка комбинации операторов с массивами и функциями
+Found identifier: arr
+Found operator: [
+Found decimal integer: 0
+Found operator: ]
+Found operator: =
+Found identifier: func
+Found identifier: a
+Found operator: +
+Found decimal integer: 10
+Found operator: -
+Found identifier: arr
+Found operator: [
+Found decimal integer: 2
+Found operator: ]
+Found operator: *
+Found identifier: arr
+Found operator: [
+Found decimal integer: 3
+Found operator: ]
+Found operator: /
+Found decimal integer: 4
+Found operator: ;
+Found single line comment: // Test 11: Проверка использования скобок для приоритета операций
+Found identifier: int
+Found identifier: result
+Found operator: =
+Found identifier: a
+Found operator: +
+Found identifier: b
+Found operator: *
+Found identifier: c
+Found operator: -
+Found identifier: d
+Found operator: /
+Found identifier: e
+Found operator: %
+Found decimal integer: 2
+Found operator: ;
+Found single line comment: // Test 12: Проверка тернарного оператора
+Found identifier: int
+Found identifier: result
+Found operator: =
+Found identifier: x
+Found operator: >
+Found identifier: y
+Found operator: ?
+Found identifier: x
+Found operator: :
+Found identifier: y
+Found operator: ;
+Found single line comment: // Test 13: Проверка сложных операторов присваивания
+Found identifier: x
+Found operator: *=
+Found decimal integer: 2
+Found operator: ;
+Found identifier: y
+Found operator: /=
+Found decimal integer: 3
+Found operator: ;
+Found identifier: z
+Found operator: %=
+Found decimal integer: 4
+Found operator: ;
+Found single line comment: // Test 14: Проверка операторов сдвига
+Found identifier: int
+Found identifier: shiftedLeft
+Found operator: =
+Found identifier: x
+Found operator: <
+Found operator: <
+Found decimal integer: 1
+Found operator: ;
+Found identifier: int
+Found identifier: shiftedRight
+Found operator: =
+Found identifier: y
+Found operator: >
+Found operator: >
+Found decimal integer: 2
+Found operator: ;
+Found single line comment: // Test 15: Проверка битовых операторов
+Found identifier: int
+Found identifier: bitwiseAnd
+Found operator: =
+Found identifier: x
+Found identifier: y
+Found operator: ;
+Found identifier: int
+Found identifier: bitwiseOr
+Found operator: =
+Found identifier: x
+Found identifier: y
+Found operator: ;
+Found identifier: int
+Found identifier: bitwiseXor
+Found operator: =
+Found identifier: x
+Found identifier: z
+Found operator: ;
+Found single line comment: // Test 16: Проверка побитового отрицания
+Found identifier: int
+Found identifier: bitwiseNot
+Found operator: =
+Found identifier: x
 Found operator: ;

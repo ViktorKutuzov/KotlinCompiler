@@ -1,0 +1,4 @@
+Found identifier: asdfsldf
+Found single line comment: //single line comment
+Found single line comment: //single line comment
+Found single line comment: //

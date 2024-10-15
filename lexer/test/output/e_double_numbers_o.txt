@@ -1,5 +1,5 @@
 Found double number: 10000000000.000000
-
 Found double number: 0.000250
-
 Found double number: 3141.590000
+Found double number: 12300000000.000000
+Found double number: 0.005670

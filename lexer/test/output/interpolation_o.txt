@@ -1,0 +1,3 @@
+Variable interpolation: $radius
+Variable interpolation: $area
+Found string literal: Test 1: Площадь круга с радиусом  равна 
