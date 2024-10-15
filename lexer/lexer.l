@@ -1,6 +1,7 @@
 %option noyywrap
 %option never-interactive
 %option yylineno
+%option stack
 
 %x STRING
 %x MULTILINE_COMMENT
