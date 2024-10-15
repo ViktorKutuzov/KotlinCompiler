@@ -25,6 +25,7 @@
 #define PRINT_SINGLE_LINE_COMMENT() printf("Found single line comment: %s\n", yytext)
 #define PRINT_MULTILINE_COMMENT() printf("Found multi line comment: %s\n", yytext)
 #define PRINT_END_OF_INTERPOLATION() printf("Interpolation ends", yytext)
+#define PRINT_MULTILINE_COMMENT() printf("Found multi line comment: %s\n", stresc)
 
 void removeUnderscores(char* str);
 
@@ -256,17 +257,17 @@ vararg { PRINT_UNSUPPORTED(); }
     PRINT_SINGLE_LINE_COMMENT();
 }
 
-\/\* {
+"/*" {
     BEGIN(MULTILINE_COMMENT);
     stresc_len = 0;
     stresc[0] = '\0';
 }
 
-<MULTILINE_COMMENT>[^*\/] {
-    strcat(yytext, stresc);
+<MULTILINE_COMMENT>[^*]*(\*+[^*/][^*]*)* {
+    strcat(stresc, yytext);
 }
 
-<MULTILINE_COMMENT>\*\/ {
+<MULTILINE_COMMENT>"*/" {
     PRINT_MULTILINE_COMMENT();
     BEGIN(INITIAL);
 }
