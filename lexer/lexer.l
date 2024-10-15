@@ -24,6 +24,7 @@
 #define PRINT_STRING_LITERAL() printf("Found string literal: %s\n", stresc)
 #define PRINT_SINGLE_LINE_COMMENT() printf("Found single line comment: %s\n", yytext)
 #define PRINT_MULTILINE_COMMENT() printf("Found multi line comment: %s\n", yytext)
+#define PRINT_END_OF_INTERPOLATION() printf("Interpolation ends", yytext)
 
 void removeUnderscores(char* str);
 
@@ -273,6 +274,17 @@ vararg { PRINT_UNSUPPORTED(); }
 <MULTILINE_COMMENT><<EOF>> {
     PRINT_ERROR("no closing */ in multiline comment");
     BEGIN(INITIAL);
+}
+
+<STRING>\$\{ {
+    yy_push_state(INITIAL);
+}
+
+\} {
+    if (yy_top_state() == INTERPOLATION) {
+        PRINT_END_OF_INTERPOLATION();
+        yy_pop_state();
+    }
 }
 
 . {}
