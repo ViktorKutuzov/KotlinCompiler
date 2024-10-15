@@ -3,6 +3,7 @@
 %option yylineno
 
 %x STRING
+%x MULTILINE_COMMENT
 
 %{
 #include <stdio.h>
@@ -22,6 +23,7 @@
 #define PRINT_FLOATING_POINT_NUMBER() printf("Found double number: %f\n", _doubleNumber)
 #define PRINT_STRING_LITERAL() printf("Found string literal: %s\n", stresc)
 #define PRINT_SINGLE_LINE_COMMENT() printf("Found single line comment: %s\n", yytext)
+#define PRINT_MULTILINE_COMMENT() printf("Found multi line comment: %s\n", yytext)
 
 void removeUnderscores(char* str);
 
@@ -252,6 +254,27 @@ vararg { PRINT_UNSUPPORTED(); }
 \/\/.+ {
     PRINT_SINGLE_LINE_COMMENT();
 }
+
+\/\* {
+    BEGIN(MULTILINE_COMMENT);
+    stresc_len = 0;
+    stresc[0] = '\0';
+}
+
+<MULTILINE_COMMENT>[^*\/] {
+    strcat(yytext, stresc);
+}
+
+<MULTILINE_COMMENT>\*\/ {
+    PRINT_MULTILINE_COMMENT();
+    BEGIN(INITIAL);
+}
+
+<MULTILINE_COMMENT><<EOF>> {
+    PRINT_ERROR("no closing */ in multiline comment");
+    BEGIN(INITIAL);
+}
+
 . {}
 
 %%
